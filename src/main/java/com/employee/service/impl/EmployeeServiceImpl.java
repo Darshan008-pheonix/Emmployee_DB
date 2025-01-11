@@ -3,6 +3,7 @@ package com.employee.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import com.employee.entity.Employee;
 import com.employee.exception.EmployeeAlreadyExistException;
@@ -12,13 +13,11 @@ import com.employee.service.EmployeeService;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	
+	@Autowired
 	private EmployeeRespository employeeRespository;
 	
 	
-	public EmployeeServiceImpl(EmployeeRespository employeeRespository) {
-		super();
-		this.employeeRespository=employeeRespository;
-	}
+	
 
 	@Override
 	public Employee saveEmployee(Employee employee) {

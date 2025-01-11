@@ -20,26 +20,18 @@ import com.employee.service.impl.EmployeeServiceImpl;
 @RestController
 @RequestMapping
 public class EmployeeController {
- 
-	
-	private EmployeeService employeeService;
-	@Autowired
-	EmployeeServiceImpl serviceImpl;
 
-	public EmployeeController(EmployeeService employeeService) {
-		super();
-		this.employeeService = employeeService;
-	}
-	
+	@Autowired
+	private EmployeeService serviceImpl;
 	@PostMapping("employees")
 	public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee){
-		return new ResponseEntity<Employee>(employeeService.saveEmployee(employee),HttpStatus.CREATED);
-	
-}
+		return new ResponseEntity<Employee>(serviceImpl.saveEmployee(employee),HttpStatus.CREATED);
+
+	}
 	@GetMapping("employees")
-public List<Employee> getAllEmployee()	{
-return employeeService.getAllEmployee();	
-}
+	public List<Employee> getAllEmployee()	{
+		return serviceImpl.getAllEmployee();	
+	}
 	@GetMapping(path = "/employee/sorted")
 	public List<Employee> function2(){
 		return serviceImpl.getEmployeeBySorting();
